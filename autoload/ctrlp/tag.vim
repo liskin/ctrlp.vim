@@ -139,7 +139,7 @@ endf
 fu! ctrlp#tag#enter()
 	let tfs = get(g:, 'ctrlp_custom_tag_files', tagfiles())
 	let s:tagfiles = type(tfs) == 3 && tfs != [] ? filter(map(tfs, 'fnamemodify(v:val, ":p")'),
-		\ 'filereadable(v:val)') : []
+		\ 'filereadable(v:val) && v:val !~ "systags"') : []
 endf
 "}}}
 
